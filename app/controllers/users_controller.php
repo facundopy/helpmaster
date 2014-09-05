@@ -1,27 +1,30 @@
 <?php
 class UsersController extends AppController {
 
-	var $name = 'Users';
-	 var $components = array('Auth'); //No es necesario si se declaro en el app controller
+	
+	var $components = array('Auth'); //No es necesario si se declaro en el app controller
 
     /**
      *  El AuthComponent proporciona la funcionalidad necesaria
      *  para el acceso (login), por lo que se puede dejar esta función en blanco.
      */
-    function login() {
-    	
+   
+    function beforeFilter() {
+       
+    }
+	
+	function login($instance = null) {
+		
 			$this->Auth->loginRedirect = array('controller' => 'ticket', 'action' => 'index');
-			 $this->Auth->allow('login');
+			
     }
 
     function logout() {
         $this->redirect($this->Auth->logout());
     }
 
-    function beforeFilter() {
-       // $this->Auth->allow('index','view','add');
-        $this->Auth->allow();
-    }
+   
+
 
 
 	function index() {

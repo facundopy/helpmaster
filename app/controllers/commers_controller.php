@@ -19,6 +19,7 @@ class CommersController extends AppController {
 	function add() {
 		if (!empty($this->data)) {
 			$this->Commer->create();
+			
 			if ($this->Commer->save($this->data)) {
 				$this->Session->setFlash(__('The commer has been saved', true));
 				$this->redirect(array('action' => 'index'));
