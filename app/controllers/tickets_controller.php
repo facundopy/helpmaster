@@ -10,57 +10,40 @@ class TicketsController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Ticket invalido', true));
-			$this->redirect($this->referer());
+			$this->Session->setFlash(__('Invalid ticket', true));
+			$this->redirect(array('action' => 'index'));
 		}
-		$options = array(
-			'conditions' => array(
-				'Ticket.id' => $id
-			),
-			'contain' => array(
-				'Realization',
-				'Commer',
-				'Precedence',
-				'Employee',
-			)
-		);
-
-		$this->Ticket->Behaviors->attach('Containable');
-		$ticket = $this->Ticket->find("first", $options);
-		//print_r($ticket); die();
-
-		$this->set('ticket', $ticket);
-
+		$this->set('ticket', $this->Ticket->read(null, $id));
 	}
 
 	function add() {
 		if (!empty($this->data)) {
 			$this->Ticket->create();
 			if ($this->Ticket->save($this->data)) {
-				$this->Session->setFlash(__('El ticket ha sido guardado ', true));
-					return $this->redirect($this->referer());
+				$this->Session->setFlash(__('The ticket has been saved', true));
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El ticket no se ha guardado, Intente de nuevo ', true));
+				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.', true));
 			}
 		}
 		$commers = $this->Ticket->Commer->find('list');
 		$realizations = $this->Ticket->Realization->find('list');
 		$precedences = $this->Ticket->Precedence->find('list');
-		$employees = $this->Ticket->Employee->find('list',array('fields'=>array('Employee.nombre')));
+		$employees = $this->Ticket->Employee->find('list');
 		$this->set(compact('commers', 'realizations', 'precedences', 'employees'));
 	}
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Ticket invalido', true));
-			$this->redirect($this->referer());
+			$this->Session->setFlash(__('Invalid ticket', true));
+			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Ticket->save($this->data)) {
-				$this->Session->setFlash(__('El ticket ha sido guardado ', true));
+				$this->Session->setFlash(__('The ticket has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El ticket no se ha guardado, Intente de nuevo ', true));
+				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -69,20 +52,20 @@ class TicketsController extends AppController {
 		$commers = $this->Ticket->Commer->find('list');
 		$realizations = $this->Ticket->Realization->find('list');
 		$precedences = $this->Ticket->Precedence->find('list');
-		$employees = $this->Ticket->Employee->find('list',array('fields'=>array('Employee.nombre')));
+		$employees = $this->Ticket->Employee->find('list');
 		$this->set(compact('commers', 'realizations', 'precedences', 'employees'));
 	}
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Ticket invalido', true));
+			$this->Session->setFlash(__('Invalid id for ticket', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Ticket->delete($id)) {
-			$this->Session->setFlash(__('Ticket eliminado', true));
+			$this->Session->setFlash(__('Ticket deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Ticket no se ha eliminado', true));
-		$this->redirect($this->referer());
+		$this->Session->setFlash(__('Ticket was not deleted', true));
+		$this->redirect(array('action' => 'index'));
 	}
 }

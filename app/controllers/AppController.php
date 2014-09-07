@@ -1,5 +1,4 @@
 ﻿<?php
 class AppController extends Controller {
-   var $components = array('Session');
-   
+    var $components = array('Auth');
 }

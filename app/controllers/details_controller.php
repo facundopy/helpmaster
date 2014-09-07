@@ -61,5 +61,5 @@ class DetailsController extends AppController {
 		}
 		$this->Session->setFlash(__('Detail was not deleted', true));
 		$this->redirect(array('action' => 'index'));
-	}
 }
+	}

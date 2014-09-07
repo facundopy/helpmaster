@@ -1,7 +1,7 @@
 <div class="details form">
 <?php echo $this->Form->create('Detail');?>
 	<fieldset>
-		<legend><?php __('Edit Detail'); ?></legend>
+		<legend><?php __('123 Edit Detail'); ?></legend>
 	<?php
 		echo $this->Form->input('ticket_id');
 		echo $this->Form->input('detalle');
