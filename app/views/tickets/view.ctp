@@ -82,7 +82,7 @@
 			<td><?php echo $detail['detalle'];?></td>
 			<!--<td><?php echo $detail['id'];?></td>-->
 			<td class="actions">
-				<?php echo $this->Html->link(__('Ver', true), array('controller' => 'details', 'action' => 'view', $detail['id'])); ?>
+				
 				<?php echo $this->Html->link(__('Editar', true), array('controller' => 'details', 'action' => 'edit', $detail['id'])); ?>
 				<?php echo $this->Html->link(__('Eliminar', true), array('controller' => 'details', 'action' => 'delete', $detail['id']), null, sprintf(__('Seguro que queres eliminar este registro # %s?', true), $detail['id'])); ?>
 			</td>

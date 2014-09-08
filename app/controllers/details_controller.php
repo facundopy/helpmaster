@@ -20,8 +20,10 @@ class DetailsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Detail->create();
 			if ($this->Detail->save($this->data)) {
-				$this->Session->setFlash(__('El detalle ha si guardado', true));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('El detalle ha sido guardado', true));
+				
+			$this->redirect(array('controller' => 'tickets','action' => 'index'));
+								
 			} else {
 				$this->Session->setFlash(__('El detalle no se guardo. Intente de nuevo.', true));
 			}
@@ -53,13 +55,13 @@ class DetailsController extends AppController {
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for detail', true));
-			$this->redirect(array('action'=>'index'));
+			$this->redirect($this->referer());
 		}
 		if ($this->Detail->delete($id)) {
 			$this->Session->setFlash(__('Detalle eliminanado', true));
-			$this->redirect(array('action'=>'index'));
+			$this->redirect($this->referer());
 		}
 		$this->Session->setFlash(__('Detalle no eliminanado', true));
-		$this->redirect(array('action' => 'index'));
+		$this->redirect($this->referer());
 	}
 }

@@ -11,7 +11,8 @@ class TicketsController extends AppController {
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Ticket invalido', true));
-			$this->redirect(array('action' => 'index'));
+			//$this->redirect(array('action' => 'index'));
+			//$this->redirect($this->referer());
 		}
 		$this->set('ticket', $this->Ticket->read(null, $id));
 	}
