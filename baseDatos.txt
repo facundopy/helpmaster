@@ -1,0 +1,658 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: commers; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE commers (
+    name text,
+    "lastName" text,
+    company text,
+    phone numeric,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.commers OWNER TO postgres;
+
+--
+-- Name: commers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE commers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.commers_id_seq OWNER TO postgres;
+
+--
+-- Name: commers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE commers_id_seq OWNED BY commers.id;
+
+
+--
+-- Name: details; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE details (
+    ticket_id integer,
+    detalle text,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.details OWNER TO postgres;
+
+--
+-- Name: details_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.details_id_seq OWNER TO postgres;
+
+--
+-- Name: details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE details_id_seq OWNED BY details.id;
+
+
+--
+-- Name: employees; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE employees (
+    id integer NOT NULL,
+    nombre text,
+    apellido text,
+    telefono numeric
+);
+
+
+ALTER TABLE public.employees OWNER TO postgres;
+
+--
+-- Name: employee_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE employee_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.employee_id_seq OWNER TO postgres;
+
+--
+-- Name: employee_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE employee_id_seq OWNED BY employees.id;
+
+
+--
+-- Name: groups; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE groups (
+    id integer NOT NULL,
+    description text
+);
+
+
+ALTER TABLE public.groups OWNER TO postgres;
+
+--
+-- Name: TABLE groups; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE groups IS 'Grupo de usuarios';
+
+
+--
+-- Name: precedences; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE precedences (
+    description text,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.precedences OWNER TO postgres;
+
+--
+-- Name: TABLE precedences; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE precedences IS 'prioridad del problema
+';
+
+
+--
+-- Name: precedences_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE precedences_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.precedences_id_seq OWNER TO postgres;
+
+--
+-- Name: precedences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE precedences_id_seq OWNED BY precedences.id;
+
+
+--
+-- Name: realizations; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE realizations (
+    description text,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.realizations OWNER TO postgres;
+
+--
+-- Name: TABLE realizations; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE realizations IS 'estado del ticket
+';
+
+
+--
+-- Name: realizations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE realizations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.realizations_id_seq OWNER TO postgres;
+
+--
+-- Name: realizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE realizations_id_seq OWNED BY realizations.id;
+
+
+--
+-- Name: secuencia; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE secuencia
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.secuencia OWNER TO postgres;
+
+--
+-- Name: tickets; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tickets (
+    commer_id integer,
+    realization_id integer,
+    precedence_id integer,
+    date date,
+    "Descripcion" text,
+    id integer NOT NULL,
+    employee_id integer
+);
+
+
+ALTER TABLE public.tickets OWNER TO postgres;
+
+--
+-- Name: tickets_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tickets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tickets_id_seq OWNER TO postgres;
+
+--
+-- Name: tickets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tickets_id_seq OWNED BY tickets.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE users (
+    username character(50),
+    password character(50),
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: TABLE users; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE users IS 'Usuario para autenticarse';
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY commers ALTER COLUMN id SET DEFAULT nextval('commers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY details ALTER COLUMN id SET DEFAULT nextval('details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY employees ALTER COLUMN id SET DEFAULT nextval('employee_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY precedences ALTER COLUMN id SET DEFAULT nextval('precedences_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY realizations ALTER COLUMN id SET DEFAULT nextval('realizations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tickets ALTER COLUMN id SET DEFAULT nextval('tickets_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: commers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO commers VALUES ('Rosa Marquez', 'Lora Gonzalez', 'IPS', 1011511, 2);
+INSERT INTO commers VALUES ('Lopez Sosa', 'Tata Lorpez', 'RATO', 21222252, 4);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 5);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 6);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 7);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 8);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 9);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 10);
+INSERT INTO commers VALUES ('jkjkj', 'jkjk', 'klkl', 54545, 11);
+INSERT INTO commers VALUES ('Juan Daniel', 'Flores Lopez', 'ITESA', 88916515, 1);
+INSERT INTO commers VALUES ('Juan Danielo ', 'Perez ', 'IBBB', 13123132121, 12);
+INSERT INTO commers VALUES ('Juan Danielo ', 'Perez ', 'IBBB', 13123132121, 13);
+INSERT INTO commers VALUES ('Juan', 'Perez', 'INDL', 13215632532, 14);
+INSERT INTO commers VALUES ('fsdf', 'fsdf', 'fsdfs', 21321321321, 15);
+INSERT INTO commers VALUES ('fasdf', 'fasdf', 'fadf', 23132, 16);
+INSERT INTO commers VALUES ('fasdf', 'dfsaf', 'sdfdf', 112312, 17);
+
+
+--
+-- Name: commers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('commers_id_seq', 17, true);
+
+
+--
+-- Data for Name: details; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO details VALUES (2, 'tenes que ver el sistema este encendido ', 2);
+INSERT INTO details VALUES (2, 'fasdf', 7);
+INSERT INTO details VALUES (2, 'sdas<dfasdf', 8);
+INSERT INTO details VALUES (2, '', 9);
+INSERT INTO details VALUES (2, '', 10);
+INSERT INTO details VALUES (2, '', 11);
+INSERT INTO details VALUES (2, '', 12);
+INSERT INTO details VALUES (2, 'sdffsd', 15);
+INSERT INTO details VALUES (4, 'sfdsd', 18);
+INSERT INTO details VALUES (4, 'dsfsdf', 19);
+INSERT INTO details VALUES (4, 'gasdfgadfgadf', 14);
+INSERT INTO details VALUES (4, 'gdfg', 17);
+INSERT INTO details VALUES (2, 'Se soluciona el probloma......', 20);
+INSERT INTO details VALUES (2, 'Se soluciona el probloma......', 21);
+INSERT INTO details VALUES (2, 'Se soluciona el probloma......', 22);
+INSERT INTO details VALUES (2, 'ljñljlñjñljlñj', 23);
+INSERT INTO details VALUES (2, 'lmlñmlmlmlmlmlmlmllmlñm', 24);
+INSERT INTO details VALUES (2, 'fdf', 25);
+INSERT INTO details VALUES (2, '123', 26);
+INSERT INTO details VALUES (2, 'nnnm', 27);
+INSERT INTO details VALUES (3, 'esmsmsms', 28);
+INSERT INTO details VALUES (3, 'fdfdf', 29);
+INSERT INTO details VALUES (3, 'fdfdfdfdfdfdfdf', 30);
+
+
+--
+-- Name: details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('details_id_seq', 30, true);
+
+
+--
+-- Name: employee_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('employee_id_seq', 3, true);
+
+
+--
+-- Data for Name: employees; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO employees VALUES (3, 'Victor ', 'Cartes ', 1215321321);
+INSERT INTO employees VALUES (2, 'Luis ', 'Gonzalez', 976174049);
+
+
+--
+-- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: precedences; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO precedences VALUES ('Alta', 1);
+INSERT INTO precedences VALUES ('Baja', 3);
+INSERT INTO precedences VALUES ('Muy baja', 4);
+INSERT INTO precedences VALUES ('nk,nnm,n,m', 5);
+INSERT INTO precedences VALUES ('Media', 2);
+
+
+--
+-- Name: precedences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('precedences_id_seq', 5, true);
+
+
+--
+-- Data for Name: realizations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO realizations VALUES ('Cerrado', 1);
+INSERT INTO realizations VALUES ('Abierto', 2);
+INSERT INTO realizations VALUES ('En Proceso', 3);
+INSERT INTO realizations VALUES ('Asignado', 4);
+INSERT INTO realizations VALUES ('Nuevo', 5);
+
+
+--
+-- Name: realizations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('realizations_id_seq', 5, true);
+
+
+--
+-- Name: secuencia; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('secuencia', 1, false);
+
+
+--
+-- Data for Name: tickets; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tickets VALUES (1, 5, 1, '2014-09-04', 'Problema con el sistema de bases de datos ', 3, 2);
+INSERT INTO tickets VALUES (1, 1, 1, '2014-09-07', '', 14, 3);
+INSERT INTO tickets VALUES (1, 3, 2, '2014-09-04', 'fasdfas', 2, 2);
+INSERT INTO tickets VALUES (1, 5, 1, '2014-09-04', 'Problema en el sistema de reclamos, no se puede hacer ninguna factura', 4, 3);
+INSERT INTO tickets VALUES (2, 1, 1, '2014-09-08', 'ss', 17, 3);
+
+
+--
+-- Name: tickets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tickets_id_seq', 17, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO users VALUES ('facundo                                           ', 'deb72f5b3653bbd58336a1e68fe0313a43263300          ', 2);
+INSERT INTO users VALUES ('jose                                              ', 'deb72f5b3653bbd58336a1e68fe0313a43263300          ', 3);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 3, true);
+
+
+--
+-- Name: commers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY commers
+    ADD CONSTRAINT commers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: details_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY details
+    ADD CONSTRAINT details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: employee_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY employees
+    ADD CONSTRAINT employee_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: group_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY groups
+    ADD CONSTRAINT group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: precedences_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY precedences
+    ADD CONSTRAINT precedences_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: realizations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY realizations
+    ADD CONSTRAINT realizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tickets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tickets
+    ADD CONSTRAINT tickets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: details_ticket_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY details
+    ADD CONSTRAINT details_ticket_id_fkey FOREIGN KEY (ticket_id) REFERENCES tickets(id);
+
+
+--
+-- Name: tickets_commers_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tickets
+    ADD CONSTRAINT tickets_commers_id_fkey FOREIGN KEY (commer_id) REFERENCES commers(id);
+
+
+--
+-- Name: tickets_employee_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tickets
+    ADD CONSTRAINT tickets_employee_id_fkey FOREIGN KEY (employee_id) REFERENCES employees(id);
+
+
+--
+-- Name: tickets_precedences_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tickets
+    ADD CONSTRAINT tickets_precedences_id_fkey FOREIGN KEY (precedence_id) REFERENCES precedences(id);
+
+
+--
+-- Name: tickets_realization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tickets
+    ADD CONSTRAINT tickets_realization_id_fkey FOREIGN KEY (realization_id) REFERENCES realizations(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
