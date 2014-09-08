@@ -20,10 +20,10 @@ class DetailsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Detail->create();
 			if ($this->Detail->save($this->data)) {
-				$this->Session->setFlash(__('The detail has been saved', true));
+				$this->Session->setFlash(__('El detalle ha si guardado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The detail could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('El detalle no se guardo. Intente de nuevo.', true));
 			}
 		}
 		$tickets = $this->Detail->Ticket->find('list');
@@ -37,10 +37,10 @@ class DetailsController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Detail->save($this->data)) {
-				$this->Session->setFlash(__('The detail has been saved', true));
+				$this->Session->setFlash(__('El detalle ha sido guardado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The detail could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('El detalle no se guardo. Intente de nuevo.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -56,10 +56,10 @@ class DetailsController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Detail->delete($id)) {
-			$this->Session->setFlash(__('Detail deleted', true));
+			$this->Session->setFlash(__('Detalle eliminanado', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Detail was not deleted', true));
+		$this->Session->setFlash(__('Detalle no eliminanado', true));
 		$this->redirect(array('action' => 'index'));
 	}
 }

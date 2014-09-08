@@ -1,5 +1,5 @@
 <div class="details index">
-	<h2><?php __('Details');?></h2>
+	<h2><?php __('Detalles');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('ticket_id');?></th>
@@ -44,10 +44,10 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Detail', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo detalle', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -1,7 +1,7 @@
 <div class="details form">
 <?php echo $this->Form->create('Detail');?>
 	<fieldset>
-		<legend><?php __('Edit Detail'); ?></legend>
+		<legend><?php __('Editar Detalle'); ?></legend>
 	<?php
 		echo $this->Form->input('ticket_id');
 		echo $this->Form->input('detalle');
@@ -14,9 +14,9 @@
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Detail.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Detail.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Details', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Detail.id')), null, sprintf(__('Esta seguro de eliminar el registro # %s?', true), $this->Form->value('Detail.id'))); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Details', true), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('Listar Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
