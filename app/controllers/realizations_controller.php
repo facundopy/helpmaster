@@ -10,7 +10,7 @@ class RealizationsController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid realization', true));
+			$this->Session->setFlash(__('Invalido estado', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('realization', $this->Realization->read(null, $id));
@@ -20,25 +20,25 @@ class RealizationsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Realization->create();
 			if ($this->Realization->save($this->data)) {
-				$this->Session->setFlash(__('The realization has been saved', true));
+				$this->Session->setFlash(__('El estado ha sigo salvado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The realization could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('El estado no ha sido guardado.Intente de nuevo ', true));
 			}
 		}
 	}
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid realization', true));
+			$this->Session->setFlash(__('Invalido estado', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Realization->save($this->data)) {
-				$this->Session->setFlash(__('The realization has been saved', true));
+				$this->Session->setFlash(__('El estado ha sigo salvado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The realization could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('El estado no ha sido guardado.Intente de nuevo ', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -48,14 +48,14 @@ class RealizationsController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for realization', true));
+			$this->Session->setFlash(__('Invalido estado Id', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Realization->delete($id)) {
-			$this->Session->setFlash(__('Realization deleted', true));
+			$this->Session->setFlash(__('Estado eliminado', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Realization was not deleted', true));
+		$this->Session->setFlash(__('El estado no ha sido eliminado', true));
 		$this->redirect(array('action' => 'index'));
 	}
 }

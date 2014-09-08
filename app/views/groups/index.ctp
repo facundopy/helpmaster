@@ -18,9 +18,9 @@
 		<td><?php echo $group['Group']['id']; ?>&nbsp;</td>
 		<td><?php echo $group['Group']['description']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $group['Group']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $group['Group']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $group['Group']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $group['Group']['id'])); ?>
+			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $group['Group']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar', true), array('action' => 'edit', $group['Group']['id'])); ?>
+			<?php echo $this->Html->link(__('Eliminar', true), array('action' => 'delete', $group['Group']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $group['Group']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -40,8 +40,8 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Group', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nuevo grupo', true), array('action' => 'add')); ?></li>
 	</ul>
 </div>

@@ -1,5 +1,5 @@
 <div class="precedences index">
-	<h2><?php __('Precedences');?></h2>
+	<h2><?php __('Impacto');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
@@ -18,9 +18,9 @@
 		<td><?php echo $precedence['Precedence']['id']; ?>&nbsp;</td>
 		<td><?php echo $precedence['Precedence']['description']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $precedence['Precedence']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $precedence['Precedence']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $precedence['Precedence']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $precedence['Precedence']['id'])); ?>
+			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $precedence['Precedence']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar', true), array('action' => 'edit', $precedence['Precedence']['id'])); ?>
+			<?php echo $this->Html->link(__('Eliminar', true), array('action' => 'delete', $precedence['Precedence']['id']), null, sprintf(__('Esta seguro de elimiar el registro # %s?', true), $precedence['Precedence']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -40,8 +40,8 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Precedence', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nuevo impacto', true), array('action' => 'add')); ?></li>
 	</ul>
 </div>
