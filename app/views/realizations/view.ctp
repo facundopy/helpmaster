@@ -49,8 +49,7 @@
 			<td><?php echo $ticket['commer_id'];?></td>
 			<td><?php echo $ticket['realization_id'];?></td>
 			<td><?php echo $ticket['date'];?></td>
-			
-			<td><?php echo $this->Html->link($ticket['Precedence']['description'] )?></td>
+			<td><?php echo $ticket['precedence_id'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('Ver', true), array('controller' => 'tickets', 'action' => 'view', $ticket['id'])); ?>
 				<?php echo $this->Html->link(__('Editar', true), array('controller' => 'tickets', 'action' => 'edit', $ticket['id'])); ?>
