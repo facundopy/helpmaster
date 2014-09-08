@@ -21,11 +21,11 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Editar detalles', true), array('action' => 'edit', $detail['Detail']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Eliminar detalles', true), array('action' => 'delete', $detail['Detail']['id']), null, sprintf(__('Esta seguro de elimintar el rigistro # %s?', true), $detail['Detail']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Lista de detalles', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo detalle', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listado Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Detail', true), array('action' => 'edit', $detail['Detail']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Detail', true), array('action' => 'delete', $detail['Detail']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $detail['Detail']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Details', true), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Detail', true), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

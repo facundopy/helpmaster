@@ -10,7 +10,7 @@ class TicketsController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid ticket', true));
+			$this->Session->setFlash(__('Ticket invalido', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('ticket', $this->Ticket->read(null, $id));
@@ -20,10 +20,10 @@ class TicketsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Ticket->create();
 			if ($this->Ticket->save($this->data)) {
-				$this->Session->setFlash(__('The ticket has been saved', true));
+				$this->Session->setFlash(__('El ticket ha sido guardado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('El ticket no ha sido guadado. Favor intente de nuevo', true));
 			}
 		}
 		$commers = $this->Ticket->Commer->find('list');
@@ -35,15 +35,15 @@ class TicketsController extends AppController {
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid ticket', true));
+			$this->Session->setFlash(__('Ticket invalido', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Ticket->save($this->data)) {
-				$this->Session->setFlash(__('The ticket has been saved', true));
+				$this->Session->setFlash(__('El ticket ha sido guardado', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('El ticket no ha sido guadado. Favor intente de nuevo', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -58,14 +58,14 @@ class TicketsController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for ticket', true));
+			$this->Session->setFlash(__('Ticket invalido', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Ticket->delete($id)) {
-			$this->Session->setFlash(__('Ticket deleted', true));
+			$this->Session->setFlash(__('Ticket eliminado', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Ticket was not deleted', true));
+		$this->Session->setFlash(__('Ticket no ha sido eliminado', true));
 		$this->redirect(array('action' => 'index'));
 	}
 }

@@ -14,7 +14,7 @@
 	</dl>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Editar estados', true), array('action' => 'edit', $realization['Realization']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('Eliminar Estado', true), array('action' => 'delete', $realization['Realization']['id']), null, sprintf(__('Esta seguro de eliminar el registro # %s?', true), $realization['Realization']['id'])); ?> </li>
@@ -25,7 +25,7 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Related Tickets');?></h3>
+	<h3><?php __('Historial de los tickets');?></h3>
 	<?php if (!empty($realization['Ticket'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>

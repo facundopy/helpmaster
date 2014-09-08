@@ -1,5 +1,5 @@
 <?php
-/* Details Test cases generated on: 2014-09-07 11:59:30 : 1410116370*/
+/* Details Test cases generated on: 2014-09-08 09:39:35 : 1410194375*/
 App::import('Controller', 'Details');
 
 class TestDetailsController extends DetailsController {

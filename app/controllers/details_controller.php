@@ -10,7 +10,7 @@ class DetailsController extends AppController {
 
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalido detalle', true));
+			$this->Session->setFlash(__('Invalid detail', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('detail', $this->Detail->read(null, $id));
@@ -20,10 +20,10 @@ class DetailsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Detail->create();
 			if ($this->Detail->save($this->data)) {
-				$this->Session->setFlash(__('El detalle ha sido salvado', true));
+				$this->Session->setFlash(__('The detail has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El detalle no ha sido guardado. Favor, intentelo de nuevo ', true));
+				$this->Session->setFlash(__('The detail could not be saved. Please, try again.', true));
 			}
 		}
 		$tickets = $this->Detail->Ticket->find('list');
@@ -32,15 +32,15 @@ class DetailsController extends AppController {
 
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalido detalle', true));
+			$this->Session->setFlash(__('Invalid detail', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Detail->save($this->data)) {
-				$this->Session->setFlash(__('El detalle ha sido salvado', true));
+				$this->Session->setFlash(__('The detail has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El detalle no ha sido guardado. Favor, intentelo de nuevo ', true));
+				$this->Session->setFlash(__('The detail could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -52,14 +52,14 @@ class DetailsController extends AppController {
 
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalido id de detalle', true));
+			$this->Session->setFlash(__('Invalid id for detail', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Detail->delete($id)) {
-			$this->Session->setFlash(__('Detalle eliminado', true));
+			$this->Session->setFlash(__('Detail deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Detalle no ha sido eliminado', true));
+		$this->Session->setFlash(__('Detail was not deleted', true));
 		$this->redirect(array('action' => 'index'));
-}
 	}
+}

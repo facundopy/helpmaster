@@ -1,11 +1,11 @@
 <div class="details index">
-	<h2><?php __('Detailles del tickets');?></h2>
+	<h2><?php __('Details');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('ticket_id');?></th>
 			<th><?php echo $this->Paginator->sort('detalle');?></th>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th class="actions"><?php __('Acciones');?></th>
+			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
 	$i = 0;
@@ -22,9 +22,9 @@
 		<td><?php echo $detail['Detail']['detalle']; ?>&nbsp;</td>
 		<td><?php echo $detail['Detail']['id']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Ver', true), array('action' => 'view', $detail['Detail']['id'])); ?>
-			<?php echo $this->Html->link(__('Editar', true), array('action' => 'edit', $detail['Detail']['id'])); ?>
-			<?php echo $this->Html->link(__('Eliminar', true), array('action' => 'delete', $detail['Detail']['id']), null, sprintf(__('Esta seguro de eliminar el registro # %s?', true), $detail['Detail']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $detail['Detail']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $detail['Detail']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $detail['Detail']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $detail['Detail']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -46,8 +46,8 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Nuevo detalles', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Listar Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Detail', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
