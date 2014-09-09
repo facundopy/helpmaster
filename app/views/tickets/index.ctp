@@ -62,7 +62,7 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php __('Actiones'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Nuevo Ticket', true), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Cliente', true), array('controller' => 'commers', 'action' => 'index')); ?> </li>
