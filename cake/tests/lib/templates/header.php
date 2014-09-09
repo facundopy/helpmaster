@@ -119,7 +119,7 @@
 	<body>
 		<div id="container">
 			<div id="header">
-				<h1>CakePHP: the rapid development php framework</h1>
+				<!-- <h1>CakePHP: the rapid development php framework</h1> -->
 			</div>
 			<div id="content">
 			<h2>CakePHP Test Suite 1.3</h2>

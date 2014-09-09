@@ -1,5 +1,5 @@
 <div class="realizations index">
-	<h2><?php __('Impacto');?></h2>
+	<h2><?php __('Estado');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
@@ -40,9 +40,9 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Nuevo impacto', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nuevo estado', true), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar tickets', true), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo ticket', true), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
 	</ul>

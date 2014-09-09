@@ -5,8 +5,8 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('employee_id');?></th>
 			<th><?php echo $this->Paginator->sort('commer_id');?></th>
-			<th><?php echo $this->Paginator->sort('realization_id');?></th>
-			<th><?php echo $this->Paginator->sort('precedence_id');?></th>
+			<th><?php echo $this->Paginator->sort('Estado');?></th>
+			<th><?php echo $this->Paginator->sort('Impacto');?></th>
 			<th><?php echo $this->Paginator->sort('date');?></th>
 			<th><?php echo $this->Paginator->sort('Descripcion');?></th>
 			
@@ -62,7 +62,7 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Actiones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Nuevo Ticket', true), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Cliente', true), array('controller' => 'commers', 'action' => 'index')); ?> </li>
@@ -70,10 +70,10 @@
 		<li><?php echo $this->Html->link(__('Listar estados', true), array('controller' => 'realizations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo estado', true), array('controller' => 'realizations', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Listado de impacto', true), array('controller' => 'precedences', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Precedence', true), array('controller' => 'precedences', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Precedence', true), array('controller' => 'precedences', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Listado empleado', true), array('controller' => 'employees', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo empleado', true), array('controller' => 'employees', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listado detalles', true), array('controller' => 'details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo detalle', true), array('controller' => 'details', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Listado detalles', true), array('controller' => 'details', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Nuevo detalle', true), array('controller' => 'details', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

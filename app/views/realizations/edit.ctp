@@ -10,7 +10,7 @@
 <?php echo $this->Form->end(__('Guardar', true));?>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php __('Acciones'); ?></h3>
 	<ul>
 
 		<li><?php echo $this->Html->link(__('Eliminar', true), array('action' => 'delete', $this->Form->value('Realization.id')), null, sprintf(__('Esta seguro de elimar el registro # %s?', true), $this->Form->value('Realization.id'))); ?></li>
